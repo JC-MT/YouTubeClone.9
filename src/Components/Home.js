@@ -15,7 +15,6 @@ class Home extends Component {
   }
 
   submitSearch = () => {
-    const KEY = 'AIzaSyDW_6OhDDkoDL23vieUpnfIVMHn45ga4Sw'
     fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${this.state.search}=video&key=${KEY}`)
     .then((response) => {
         console.log(this.state.search)
