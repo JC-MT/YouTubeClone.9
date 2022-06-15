@@ -1,0 +1,35 @@
+.navbar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: red;
+    text-align: left;
+}
+
+#paths {
+    display: grid; 
+    margin: 0px 25px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+#paths #logo{
+    color: white;
+    margin-top: 34px;
+}
+
+#paths h3 a {
+    background: var(--primary);
+    display: block;
+    color: white;
+    border: 1px solid var(--primary);
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+
+#paths h3 a:hover {
+    background: var(--white);
+    color: var(--black);
+  }
