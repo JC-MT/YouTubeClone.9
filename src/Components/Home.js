@@ -25,25 +25,24 @@ class Home extends Component {
   submitSearch = () => {
     const KEY = 'AIzaSyAU7H-NaZXo_guClScGPYJ28KsSej7cd28';
     fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${this.state.search}=video&key=${KEY}`
+      `https://www.googleapis.com/youtube/v3/search?part=snippt&maxResults=10&q=${this.state.search}=video&key=${KEY}`
     )
       .then((response) => {
         this.setState({ search: '' });
         return response.json();
       })
       .then(this.displaysVideos)
-      .catch(console.log);
+      .catch(console.log('we hit'));
   };
 
   render() {
-    console.log(this.state);
     const results = this.state.videos.map((video) => {
+      const { snippet, id } = video
       return (
-        <>
-          <img src={video.snippet.thumbnails.high.url} />
-          <h4>{video.snippet.title}</h4>
-          <p>{video.snippet.description}</p>
-        </>
+        <div key={id.videoId}>
+          <img src={snippet.thumbnails.high.url} />
+          <h4>{snippet.title}</h4>
+        </div>
       );
     });
     return (
@@ -54,12 +53,13 @@ class Home extends Component {
           value={this.state.search}
           placeholder="Search..."
           type="text"
-        ></input>
+        />
         <button onClick={this.submitSearch}>Search</button>
-        <div>{results}</div>
+        {this.state.videos.length ? results : <p id='no-search'>No Search Results Yet! Please submit a search above!</p>}
       </div>
     );
   }
 }
+
 
 export default Home;
