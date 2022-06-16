@@ -16,7 +16,6 @@ class Home extends Component {
   };
 
   displaysVideos = (videos) => {
-    console.log(videos)
     const { items } = videos;
     this.setState({
       videos: [...items],
@@ -29,12 +28,11 @@ class Home extends Component {
       `https://www.googleapis.com/youtube/v3/search?part=snippt&maxResults=10&q=${this.state.search}=video&key=${KEY}`
     )
       .then((response) => {
-        console.log(response)
         this.setState({ search: '' });
         return response.json();
       })
       .then(this.displaysVideos)
-      .catch(console.log);
+      .catch(console.log('we hit'));
   };
 
   render() {
@@ -44,7 +42,6 @@ class Home extends Component {
         <div key={id.videoId}>
           <img src={snippet.thumbnails.high.url} />
           <h4>{snippet.title}</h4>
-          <p>{snippet.description}</p>
         </div>
       );
     });
@@ -58,7 +55,7 @@ class Home extends Component {
           type="text"
         />
         <button onClick={this.submitSearch}>Search</button>
-        {results}
+        {this.state.videos.length ? results : <p id='no-search'>No Search Results Yet! Please submit a search above!</p>}
       </div>
     );
   }
