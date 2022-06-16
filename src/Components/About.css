@@ -5,9 +5,10 @@
     gap: 1rem;
 }
 
-img {
+.about-img {
     width: 200px;
     height: 200px;
+    border-radius: 100px;
 }
 
 p {
