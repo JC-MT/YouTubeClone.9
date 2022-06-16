@@ -9,7 +9,7 @@
     display: grid; 
     margin: 0px 25px;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 #paths #logo{
@@ -24,7 +24,6 @@
     border: 1px solid var(--primary);
     margin: 10px;
     padding: 10px;
-    text-align: center;
     text-decoration: none;
   }
 
