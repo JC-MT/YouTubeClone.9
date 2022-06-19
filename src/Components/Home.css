@@ -20,3 +20,10 @@ button {
     padding: 20px;
     background-color: lightgrey;
 }
+
+.video-grid {
+  display: grid;
+  padding: 60px;
+  grid-template-columns: repeat(2, 1fr);
+}
+  

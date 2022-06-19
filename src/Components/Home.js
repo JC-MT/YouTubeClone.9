@@ -2,14 +2,13 @@ import { Component } from 'react';
 import './Home.css';
 import './ModalWindow';
 import ModalWindow from './ModalWindow';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       search: '',
-      videos: [],
-      status: 0,
     };
   }
 
@@ -18,47 +17,40 @@ class Home extends Component {
     this.setState({ search: value });
   };
 
-  displaysVideos = (videos) => {
-    const { items } = videos;
-    this.setState({
-      videos: [...items],
-    });
-  };
-
-  handleError = (error) => {
-    this.setState({
-      status: error.status,
-    });
+  handleError = () => {
     document.getElementById('myModal').style.display = 'block';
   };
 
   submitSearch = () => {
+    this.props.loadingActive(true);
     const KEY = 'AIzaSyAU7H-NaZXo_guClScGPYJ28KsSej7cd28';
     fetch(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${this.state.search}=video&key=${KEY}`
     )
       .then((response) => {
         if (response.status === 200) {
-          this.setState({ search: '' });
+          this.setState({ search: ''});
           return response.json();
-        } else {
-          this.handleError(response);
         }
       })
-      .then(this.displaysVideos)
-      .catch(console.log);
+      .then(this.props.getRequest)
+      .catch(this.handleError);
   };
 
   render() {
-    const results = this.state.videos.map((video) => {
+    const results = this.props.currentVideos.map((video) => {
       const { snippet, id } = video;
+
       return (
         <div key={id.videoId}>
-          <img src={snippet.thumbnails.high.url} />
-          <h4>{snippet.title}</h4>
+          <Link to={`/videos/${id.videoId}`}>
+            <img src={snippet.thumbnails.high.url} alt="video thumbnail" />
+            <h4>{snippet.title}</h4>
+          </Link>
         </div>
       );
     });
+
     return (
       <div>
         <h1>Home</h1>
@@ -69,8 +61,8 @@ class Home extends Component {
           type="text"
         />
         <button onClick={this.submitSearch}>Search</button>
-        {this.state.videos.length ? (
-          results
+        {this.props.currentVideos.length > 0 ? (
+          <div className="video-grid">{results}</div>
         ) : (
           <p id="no-search">
             No Search Results Yet! Please submit a search above!
