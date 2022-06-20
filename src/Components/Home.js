@@ -58,8 +58,13 @@ class Home extends Component {
         <h1>Home</h1>
         <input
           onChange={this.updateSearch}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              this.submitSearch();
+            }
+          }}
           value={this.state.search}
-          placeholder="Search..."
+          placeholder="Search…"
           type="text"
         />
         <button onClick={this.submitSearch}>Search</button>
@@ -67,7 +72,7 @@ class Home extends Component {
           <div className="video-grid">{results}</div>
         ) : (
           <p id="no-search">
-            No Search Results Yet! Please submit a search above!
+            No search results yet! Please submit a search above!
           </p>
         )}
         {/* <!-- The Modal --> */}
