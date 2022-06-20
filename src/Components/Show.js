@@ -7,7 +7,7 @@ const Show = ({currentVideos}) => {
     return video.id.videoId === params.id;
   });
 
-  const { description, channelTitle, thumbnails, title } =
+  const {thumbnails, title } =
     selectedVideo.snippet;
 
   return (
@@ -16,8 +16,6 @@ const Show = ({currentVideos}) => {
       <div>
         <img src={`${thumbnails.high.url}`} alt="video thumbnail" />
         <h3>{title}</h3>
-        <p>{description}</p>
-        <p>by {channelTitle}</p>
       </div>
     </div>
   );
