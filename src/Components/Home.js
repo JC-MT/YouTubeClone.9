@@ -10,6 +10,7 @@ class Home extends Component {
     this.state = {
       search: '',
     };
+    console.log(props)
   }
 
   updateSearch = (event) => {
@@ -18,6 +19,7 @@ class Home extends Component {
   };
 
   handleError = () => {
+    this.props.loadingActive(false);
     document.getElementById('myModal').style.display = 'block';
   };
 
@@ -29,7 +31,7 @@ class Home extends Component {
     )
       .then((response) => {
         if (response.status === 200) {
-          this.setState({ search: ''});
+          this.setState({ search: '' });
           return response.json();
         }
       })
@@ -38,9 +40,10 @@ class Home extends Component {
   };
 
   render() {
+    console.log(this.state)
     const results = this.props.currentVideos.map((video) => {
       const { snippet, id } = video;
-
+      console.log(video)
       return (
         <div key={id.videoId}>
           <Link to={`/videos/${id.videoId}`}>
@@ -61,7 +64,7 @@ class Home extends Component {
           type="text"
         />
         <button onClick={this.submitSearch}>Search</button>
-        {this.props.currentVideos.length > 0 ? (
+        {this.props.currentVideos.length > 0 || this.props.searching ? (
           <div className="video-grid">{results}</div>
         ) : (
           <p id="no-search">

@@ -49,6 +49,7 @@ class App extends Component {
                 getRequest={this.currentVideos}
                 currentVideos={this.state.videos}
                 loadingActive={this.loadingActive}
+                searching={this.state.loadingActive}
               />
             }
           />

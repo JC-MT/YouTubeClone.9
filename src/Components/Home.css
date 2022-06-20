@@ -23,7 +23,7 @@ button {
 
 .video-grid {
   display: grid;
-  padding: 60px;
+  padding: 30px;
   grid-template-columns: repeat(2, 1fr);
 }
   
