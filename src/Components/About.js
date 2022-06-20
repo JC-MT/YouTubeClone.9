@@ -21,7 +21,7 @@ const About = () => {
         <article>
           <img
             className="about-img"
-            src="https://ca.slack-edge.com/TCVA3PF24-U02LS2MVA67-9506fb15133a-512"
+            src="https://avatars.githubusercontent.com/u/794551?v=4"
             alt="contributor headshot"
           />
           <h3>Jonathan Scheiber</h3>

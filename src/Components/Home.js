@@ -2,7 +2,6 @@ import { Component } from 'react';
 import './Home.css';
 import './ModalWindow';
 import ModalWindow from './ModalWindow';
-import Example from './Example'
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
@@ -11,7 +10,6 @@ class Home extends Component {
     this.state = {
       search: '',
     };
-    console.log(props)
   }
 
   updateSearch = (event) => {
@@ -19,7 +17,8 @@ class Home extends Component {
     this.setState({ search: value });
   };
 
-  handleError = () => {
+  handleError = (error) => {
+    console.log(error)
     this.props.loadingActive(false);
     document.getElementById('myModal').style.display = 'block';
   };
@@ -41,14 +40,13 @@ class Home extends Component {
   };
 
   render() {
-    console.log(this.state)
     const results = this.props.currentVideos.map((video) => {
       const { snippet, id } = video;
       console.log(video)
       return (
         <div key={id.videoId}>
           <Link to={`/videos/${id.videoId}`}>
-            <Example id={id.videoId} thumbnails={snippet.thumbnails.high} alt="video thumbnail" />
+            <img id={id.videoId} src={`${snippet.thumbnails.high.url}`} alt="video thumbnail" />
           </Link>
           <h4>{snippet.title}</h4>
         </div>
