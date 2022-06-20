@@ -13,10 +13,17 @@ button {
 }
 
 #no-search {
-    display: inline-block;
     width: 600px;
     border-radius: 5px;
+    margin: auto;
     margin-top: 25px;
     padding: 20px;
     background-color: lightgrey;
 }
+
+.video-grid {
+  display: grid;
+  padding: 30px;
+  grid-template-columns: repeat(2, 1fr);
+}
+  

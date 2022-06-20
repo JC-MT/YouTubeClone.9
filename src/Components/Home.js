@@ -1,13 +1,16 @@
 import { Component } from 'react';
 import './Home.css';
+import './ModalWindow';
+import ModalWindow from './ModalWindow';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       search: '',
-      videos: [],
     };
+    console.log(props)
   }
 
   updateSearch = (event) => {
@@ -15,36 +18,42 @@ class Home extends Component {
     this.setState({ search: value });
   };
 
-  displaysVideos = (videos) => {
-    const { items } = videos;
-    this.setState({
-      videos: [...items],
-    });
+  handleError = () => {
+    this.props.loadingActive(false);
+    document.getElementById('myModal').style.display = 'block';
   };
 
   submitSearch = () => {
+    this.props.loadingActive(true);
     const KEY = 'AIzaSyAU7H-NaZXo_guClScGPYJ28KsSej7cd28';
     fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippt&maxResults=10&q=${this.state.search}=video&key=${KEY}`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${this.state.search}=video&key=${KEY}`
     )
       .then((response) => {
-        this.setState({ search: '' });
-        return response.json();
+        if (response.status === 200) {
+          this.setState({ search: '' });
+          return response.json();
+        }
       })
-      .then(this.displaysVideos)
-      .catch(console.log('we hit'));
+      .then(this.props.getRequest)
+      .catch(this.handleError);
   };
 
   render() {
-    const results = this.state.videos.map((video) => {
-      const { snippet, id } = video
+    console.log(this.state)
+    const results = this.props.currentVideos.map((video) => {
+      const { snippet, id } = video;
+      console.log(video)
       return (
         <div key={id.videoId}>
-          <img src={snippet.thumbnails.high.url} />
-          <h4>{snippet.title}</h4>
+          <Link to={`/videos/${id.videoId}`}>
+            <img src={snippet.thumbnails.high.url} alt="video thumbnail" />
+            <h4>{snippet.title}</h4>
+          </Link>
         </div>
       );
     });
+
     return (
       <div>
         <h1>Home</h1>
@@ -55,11 +64,18 @@ class Home extends Component {
           type="text"
         />
         <button onClick={this.submitSearch}>Search</button>
-        {this.state.videos.length ? results : <p id='no-search'>No Search Results Yet! Please submit a search above!</p>}
+        {this.props.currentVideos.length > 0 || this.props.searching ? (
+          <div className="video-grid">{results}</div>
+        ) : (
+          <p id="no-search">
+            No Search Results Yet! Please submit a search above!
+          </p>
+        )}
+        {/* <!-- The Modal --> */}
+        <ModalWindow />
       </div>
     );
   }
 }
-
 
 export default Home;
