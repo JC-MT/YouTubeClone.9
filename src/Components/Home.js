@@ -2,6 +2,7 @@ import { Component } from 'react';
 import './Home.css';
 import './ModalWindow';
 import ModalWindow from './ModalWindow';
+import Example from './Example'
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
@@ -47,9 +48,9 @@ class Home extends Component {
       return (
         <div key={id.videoId}>
           <Link to={`/videos/${id.videoId}`}>
-            <img src={snippet.thumbnails.high.url} alt="video thumbnail" />
-            <h4>{snippet.title}</h4>
+            <Example id={id.videoId} thumbnails={snippet.thumbnails.high} alt="video thumbnail" />
           </Link>
+          <h4>{snippet.title}</h4>
         </div>
       );
     });
