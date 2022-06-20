@@ -8,7 +8,7 @@ const About = () => {
         <article>
           <img
             className="about-img"
-            src="https://i.imgur.com/RVwYeYA.jpeg"
+            src="./headshots/isaac.png"
             alt="contributor headshot"
           />
           <h3>Isaac Gonzalez</h3>
@@ -21,7 +21,7 @@ const About = () => {
         <article>
           <img
             className="about-img"
-            src="https://ca.slack-edge.com/TCVA3PF24-U02LS2MVA67-9506fb15133a-512"
+            src="./headshots/jonathan.png"
             alt="contributor headshot"
           />
           <h3>Jonathan Scheiber</h3>
@@ -36,7 +36,7 @@ const About = () => {
         <article>
           <img
             className="about-img"
-            src="https://ca.slack-edge.com/TCVA3PF24-U02M4L0HQKB-45e4dd21dc45-512"
+            src="./headshots/jan.png"
             alt="contributor headshot"
           />
           <h3>Jan C. Matias</h3>

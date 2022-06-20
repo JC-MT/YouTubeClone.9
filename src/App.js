@@ -16,7 +16,6 @@ class App extends Component {
   }
 
   currentVideos = (videos) => {
-    console.log(videos);
     const { items } = videos;
     this.setState({
       videos: [...items],
@@ -37,7 +36,6 @@ class App extends Component {
         <div className="loading" />
       </div>
     );
-    console.log(this.state);
     return (
       <div className="App">
         <NavBar />

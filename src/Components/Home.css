@@ -10,6 +10,7 @@ button {
     border-radius: 5px;
     color: white;
     background-color: red;
+    font-weight: bold;
 }
 
 #no-search {
@@ -24,6 +25,7 @@ button {
 .video-grid {
   display: grid;
   padding: 30px;
+  column-gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
 }
   
