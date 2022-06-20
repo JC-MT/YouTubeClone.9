@@ -1,5 +1,6 @@
-import './Show.css';
-import { useParams } from 'react-router-dom';
+import "./Show.css";
+import { useParams } from "react-router-dom";
+import Comment from "./comment";
 import YouTube from 'react-youtube';
 
 const Show = ({ currentVideos }) => {
