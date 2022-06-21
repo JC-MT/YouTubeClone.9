@@ -9,14 +9,20 @@ const Show = ({ currentVideos }) => {
     return video.id.videoId === params.id;
   });
 
-  const _onReady = (event) => {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo();
-  }
+  // const _onReady = (event) => {
+  //   // access to player in all event handlers via event.target
+  //   event.target.pauseVideo();
+  // }
+  // onReady={_onReady}
 
   const opts = {
     height: '390',
     width: '640',
+    playerVars: {
+      autoplay: 1,
+      start: 0,
+      end: 0,
+    }
   };
 
   const { videoId } = selectedVideo.id
@@ -24,7 +30,7 @@ const Show = ({ currentVideos }) => {
   return (
     <div>
       <h1> Please Enjoy 😎 </h1>
-        <YouTube videoId={videoId} opts={opts} onReady={_onReady} />
+        <YouTube videoId={videoId} opts={opts} />
         <Comment/>
     </div>
   );
