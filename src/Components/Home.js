@@ -1,14 +1,14 @@
-import { Component } from 'react';
-import './Home.css';
-import './ModalWindow';
-import ModalWindow from './ModalWindow';
-import { Link } from 'react-router-dom';
+import { Component } from "react";
+import "./Home.css";
+import "./ModalWindow";
+import ModalWindow from "./ModalWindow";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: '',
+      search: "",
     };
   }
 
@@ -18,20 +18,20 @@ class Home extends Component {
   };
 
   handleError = (error) => {
-    console.log(error)
+    console.log(error);
     this.props.loadingActive(false);
-    document.getElementById('myModal').style.display = 'block';
+    document.getElementById("myModal").style.display = "block";
   };
 
   submitSearch = () => {
     this.props.loadingActive(true);
-    const KEY = 'AIzaSyBtYNZDf3EsFIMB_ANFZHzdirKnX_GWMs0';
+    const KEY = "AIzaSyBtYNZDf3EsFIMB_ANFZHzdirKnX_GWMs0";
     fetch(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${this.state.search}=video&key=${KEY}`
     )
       .then((response) => {
         if (response.status === 200) {
-          this.setState({ search: '' });
+          this.setState({ search: "" });
           return response.json();
         }
       })
@@ -42,11 +42,15 @@ class Home extends Component {
   render() {
     const results = this.props.currentVideos.map((video) => {
       const { snippet, id } = video;
-      console.log(video)
+      console.log(video);
       return (
         <div key={id.videoId}>
           <Link to={`/videos/${id.videoId}`}>
-            <img id={id.videoId} src={`${snippet.thumbnails.high.url}`} alt="video thumbnail" />
+            <img
+              id={id.videoId}
+              src={`${snippet.thumbnails.high.url}`}
+              alt="video thumbnail"
+            />
           </Link>
           <h4>{snippet.title}</h4>
         </div>
@@ -67,7 +71,9 @@ class Home extends Component {
           placeholder="Search…"
           type="text"
         />
-        <button onClick={this.submitSearch}>Search</button>
+        <button onClick={this.submitSearch} id="mainSearch">
+          Search
+        </button>
         {this.props.currentVideos.length > 0 || this.props.searching ? (
           <div className="video-grid">{results}</div>
         ) : (
