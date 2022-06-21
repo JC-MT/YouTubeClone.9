@@ -36,7 +36,6 @@ const About = () => {
             [Full Stack Developer | Passionate about being the best I can
             possibly be!]
           </p>
-          <a href="https://github.com/0IG">GitHub</a>
         </article>
         <article>
           <img
@@ -51,7 +50,6 @@ const About = () => {
             JavaScript and React. His interests include user experience (UX)
             design, project management, and accessibility.
           </p>
-          <a href="https://github.com/Scheiber">GitHub</a>
         </article>
         <article>
           <img
@@ -66,7 +64,6 @@ const About = () => {
             watching Anime, being forced to watch Gilmore Girls for the
             millionth time, or planning a getaway trip with my lovely wife.
           </p>
-          <a href="https://github.com/JC-MT">GitHub</a>
         </article>
       </div>
     </div>
