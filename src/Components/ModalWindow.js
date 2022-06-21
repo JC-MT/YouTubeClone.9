@@ -14,7 +14,7 @@ const ModalWindow = () => {
         </span>
         <img
           id="error-img"
-          src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F__sgXJ0qRoEs%2FS7DBB-F4M4I%2FAAAAAAAAAO4%2FLnpvqaza4ag%2Fs1600%2Fexclamation_mark.png&f=1&nofb=1"
+          src="./error.png"
           alt="exclamation mark"
         />
         <h1>Something went wrong</h1>
