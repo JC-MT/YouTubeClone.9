@@ -25,7 +25,7 @@ class Home extends Component {
 
   submitSearch = () => {
     this.props.loadingActive(true);
-    const KEY = 'AIzaSyAU7H-NaZXo_guClScGPYJ28KsSej7cd28';
+    const KEY = 'AIzaSyBtYNZDf3EsFIMB_ANFZHzdirKnX_GWMs0';
     fetch(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${this.state.search}=video&key=${KEY}`
     )

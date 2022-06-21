@@ -26,7 +26,7 @@ export default class Comment extends Component {
     const { name, comment } = this.state;
     return (
       <div className="comment-form">
-        Name
+        <hr></hr>
         <form onSubmit={this.addToShow}>
           <label>
             Name
@@ -52,6 +52,7 @@ export default class Comment extends Component {
             <button>Submit</button>
           </div>
         </form>
+        <hr></hr>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import "./Show.css";
 import { useParams } from "react-router-dom";
-import Comment from "./comment";
+import Comment from "./Comment";
 import YouTube from 'react-youtube';
 
 const Show = ({ currentVideos }) => {
@@ -25,6 +25,7 @@ const Show = ({ currentVideos }) => {
     <div>
       <h1> Please Enjoy 😎 </h1>
         <YouTube videoId={videoId} opts={opts} onReady={_onReady} />
+        <Comment/>
     </div>
   );
 };
