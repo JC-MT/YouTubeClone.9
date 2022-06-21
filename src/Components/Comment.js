@@ -34,7 +34,7 @@ export default class Comment extends Component {
         <hr></hr>
         <div className="comment-form">
           <form onSubmit={this.addToShow}>
-            <label>Name</label>
+            <label id='nameLabel'>Name</label>
             <br />
             <input
               id="nameInput"
@@ -45,7 +45,7 @@ export default class Comment extends Component {
               onChange={this.handleCommenter}
             />
             <br />
-            <label>Comment</label>
+            <label id="commentLabel">Comment</label>
             <br />
             <input
               id="commentInput"
@@ -61,7 +61,7 @@ export default class Comment extends Component {
             </div>
           </form>
           {this.state.listOfComment.map((comment) => {
-            return <p>{comment}</p>;
+            return <p className="comment">{comment}</p>;
           })}
           <hr></hr>
         </div>

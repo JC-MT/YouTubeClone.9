@@ -74,7 +74,7 @@ class Home extends Component {
           placeholder="Search…"
           type="text"
         />
-        <button onClick={this.submitSearch} id="mainSearch">
+        <button onClick={this.submitSearch} id="mainSearch">Search…</button>
         {currentVideos.length > 0 || searching ? (
           <div className="video-grid">{results}</div>
         ) : (
