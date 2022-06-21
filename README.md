@@ -4,6 +4,7 @@ This React application lets you search for YouTube videos using the YouTube API,
 
 ## Links
 
+- [Live Deployment](https://9tube.netlify.app)
 - [Project Prompt](https://github.com/joinpursuit/React-YouTube-Project-Prompt)
 - [Project Requirements](https://github.com/joinpursuit/React-YouTube-Project-Prompt/blob/main/docs/requirements.md)
 - [Trello Board](https://trello.com/b/vsrQRvgq/group-9-youtube-project)
