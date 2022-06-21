@@ -33,6 +33,7 @@ export default class Comment extends Component {
             <input
               type="text"
               name="name"
+              placeholder="Name..."
               value={name}
               onChange={this.handleCommenter}
             />
@@ -43,6 +44,7 @@ export default class Comment extends Component {
             <input
               type="text"
               name="comment"
+              placeholder="..."
               value={comment}
               onChange={this.handleComment}
             />
