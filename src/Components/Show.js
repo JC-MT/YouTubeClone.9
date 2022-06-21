@@ -9,12 +9,6 @@ const Show = ({ currentVideos }) => {
     return video.id.videoId === params.id;
   });
 
-  // const _onReady = (event) => {
-  //   // access to player in all event handlers via event.target
-  //   event.target.pauseVideo();
-  // }
-  // onReady={_onReady}
-
   const opts = {
     height: '390',
     width: '640',
