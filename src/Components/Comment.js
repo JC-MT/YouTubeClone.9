@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import "./Comment.css";
 
+
 export default class Comment extends Component {
   constructor() {
     super();
     this.state = { name: "", comment: "", listOfComment: [] };
+
   }
   handleCommenter = (event) => {
     const { value } = event.target;
