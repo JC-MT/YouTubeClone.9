@@ -18,7 +18,7 @@ class Home extends Component {
   };
 
   handleError = (error) => {
-    console.log(error)
+    console.log(error);
     this.props.loadingActive(false);
     document.getElementById('myModal').style.display = 'block';
   };
@@ -40,13 +40,20 @@ class Home extends Component {
   };
 
   render() {
-    const results = this.props.currentVideos.map((video) => {
-      const { snippet, id } = video;
-      console.log(video)
+    const { currentVideos, searching } = this.props;
+
+    const results = currentVideos.map((video) => {
+      const { snippet } = video;
+      const { videoId } = video.id;
+
       return (
-        <div key={id.videoId}>
-          <Link to={`/videos/${id.videoId}`}>
-            <img id={id.videoId} src={`${snippet.thumbnails.high.url}`} alt="video thumbnail" />
+        <div key={videoId}>
+          <Link to={`/videos/${videoId}`}>
+            <img
+              id={videoId}
+              src={`${snippet.thumbnails.high.url}`}
+              alt="video thumbnail"
+            />
           </Link>
           <h4>{snippet.title}</h4>
         </div>
@@ -58,8 +65,8 @@ class Home extends Component {
         <h1>Home</h1>
         <input
           onChange={this.updateSearch}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
+          onKeyPress={(baseEvent) => {
+            if (baseEvent.key === 'Enter') {
               this.submitSearch();
             }
           }}
@@ -68,7 +75,7 @@ class Home extends Component {
           type="text"
         />
         <button onClick={this.submitSearch}>Search</button>
-        {this.props.currentVideos.length > 0 || this.props.searching ? (
+        {currentVideos.length > 0 || searching ? (
           <div className="video-grid">{results}</div>
         ) : (
           <p id="no-search">

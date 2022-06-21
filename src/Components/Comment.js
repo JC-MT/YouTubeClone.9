@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class Comment extends Component {
   constructor() {
     super();
-    this.state = { name: "", comment: "" };
+    this.state = { name: '', comment: '' };
   }
   handleCommenter = (event) => {
     const { value } = event.target;
@@ -17,10 +17,10 @@ export default class Comment extends Component {
 
   addToShow = (event) => {
     event.preventDefault();
-    let section = document.createElement("p");
+    let section = document.createElement('p');
     section.textContent = `${this.state.name} says: ${this.state.comment}`;
-    document.querySelector("div.section").append(section);
-    this.setState({ comment: "", name: "" });
+    document.querySelector('div.section').append(section);
+    this.setState({ comment: '', name: '' });
   };
   render() {
     const { name, comment } = this.state;
@@ -28,28 +28,24 @@ export default class Comment extends Component {
       <div className="comment-form">
         <hr></hr>
         <form onSubmit={this.addToShow}>
-          <label>
-            Name
-            <input
-              type="text"
-              name="name"
-              placeholder="Name..."
-              value={name}
-              onChange={this.handleCommenter}
-            />
-          </label>
+          <label>Name</label>
           <br />
-          <label>
-            Comment
-            <input
-              type="text"
-              name="comment"
-              placeholder="..."
-              value={comment}
-              onChange={this.handleComment}
-            />
-          </label>
-          <br />
+          <input
+            type="text"
+            name="name"
+            placeholder="Name..."
+            value={name}
+            onChange={this.handleCommenter}
+          />
+          <label>Comment</label>
+          <br></br>
+          <input
+            type="text"
+            name="comment"
+            placeholder="..."
+            value={comment}
+            onChange={this.handleComment}
+          />
           <div className="section">
             <button>Submit</button>
           </div>
