@@ -1,0 +1,26 @@
+#btn {
+    background-color: rgb(30, 124, 224);
+    color: white;
+    padding: 10px;
+    width: 80px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    font-size: medium;
+}
+#nameInput {
+    border-color: white;
+    width: 600px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#commentInput {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 600px;
+}
+.comment-form {
+    text-align: left;
+    margin-left: 400px;
+    margin-right: 400px;
+}
