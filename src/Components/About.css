@@ -1,37 +1,43 @@
 .about {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 30px;
-    gap: 1rem;
-}
-
-.about-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 30px;
+  gap: 1rem;
 }
 
 .header {
-    text-align: center;
-    padding-left: 5%;
-    padding-right: 5%;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .description {
-    text-align: center;
-    padding-left: 20%;
-    padding-right: 20%;
+  text-align: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  line-height: 140%;
+}
+
+.headshot {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
 }
 
 .bio {
-    text-align: left;
-    text-indent: 15px;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.icon {
+  padding: 10px;
 }
 
 a {
-    color: red;
+  color: red;
 }
 
 a:hover {
-    color: black;
+  color: black;
 }
