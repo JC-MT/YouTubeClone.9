@@ -4,6 +4,7 @@ import NavBar from './Components/NavBar';
 import Home from './Components/Home';
 import About from './Components/About';
 import Show from './Components/Show';
+import NotFound from './Components/NotFound';
 import { Route, Routes } from 'react-router-dom';
 
 class App extends Component {
@@ -54,8 +55,9 @@ class App extends Component {
           <Route path="/about" element={<About />} />
           <Route
             path="/videos/:id"
-            element={<Show currentVideos={this.state.videos} />}
+            element={<Show />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         {this.state.loadingActive === true ? spinner : null}
       </div>

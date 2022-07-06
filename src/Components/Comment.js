@@ -1,39 +1,34 @@
-import React, { Component } from "react";
+import { useState } from "react";
+import useFirebase from "../Hooks/useFirebase";
 import "./Comment.css";
 
+export default function Comment({videoId}){
+  const [commentDraft, setCommentDraft] = useState({
+    name: "",
+    comment: "",
+  });
 
-export default class Comment extends Component {
-  constructor() {
-    super();
-    this.state = { name: "", comment: "", listOfComment: [] };
-
-  }
-  handleCommenter = (event) => {
-    const { value } = event.target;
-    this.setState({ name: value });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setCommentDraft({...commentDraft, [name]: value });
   };
 
-  handleComment = (event) => {
-    const { value } = event.target;
-    this.setState({ comment: value });
-  };
-  // REFACTOR COMMENT SECTION
-  addToShow = (event) => {
+  const [ comments, postComment] = useFirebase(videoId)
+  const addComment = (event) => {
     event.preventDefault();
-    if (this.state.name && this.state.comment) {
-      let foo = `${this.state.name} ${this.state.comment}`;
-      this.setState({ listOfComment: [...this.state.listOfComment, foo] });
+    if (commentDraft.name && commentDraft.comment) {
+      postComment(commentDraft.name, commentDraft.comment)
+      setCommentDraft({name: "", comment: ""})
     } else {
       alert("Missing text fields");
     }
   };
-  render() {
-    const { name, comment } = this.state;
+
     return (
       <div>
         <hr></hr>
         <div className="comment-form">
-          <form onSubmit={this.addToShow}>
+          <form onSubmit={addComment}>
             <label id='nameLabel'>Name</label>
             <br />
             <input
@@ -41,8 +36,8 @@ export default class Comment extends Component {
               type="text"
               name="name"
               placeholder="Name..."
-              value={name}
-              onChange={this.handleCommenter}
+              value={commentDraft.name}
+              onChange={handleChange}
             />
             <br />
             <label id="commentLabel">Comment</label>
@@ -52,20 +47,25 @@ export default class Comment extends Component {
               type="text"
               name="comment"
               placeholder="..."
-              value={comment}
-              onChange={this.handleComment}
+              value={commentDraft.comment}
+              onChange={handleChange}
             />
             <br />
             <div className="section">
               <button id="btn">Submit</button>
+              <hr id="smaller-line"></hr>
             </div>
           </form>
-          {this.state.listOfComment.map((comment) => {
-            return <p className="comment">{comment}</p>;
+          {comments.map((comment) => {
+            return (
+              <div className="comment">
+                <h3>
+                  {comment.author}
+                </h3>
+                <p>{comment.comment}</p>
+              </div>);
           })}
-          <hr></hr>
         </div>
       </div>
     );
   }
-}

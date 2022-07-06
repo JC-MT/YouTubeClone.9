@@ -9,17 +9,13 @@
     font-size: medium;
     margin-right: 545px
 }
-#nameInput {
-    border-color: white;
-    width: 600px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
+#nameInput,
 #commentInput {
+    width: 600px;
     margin-top: 5px;
     margin-bottom: 5px;
-    width: 600px;
 }
+
 .comment-form {
     text-align: center;
     margin: auto;
@@ -31,4 +27,13 @@
 
 #commentLabel{
     margin-right: 550px;
+}
+
+.comment {
+    margin-left: 640px;
+    text-align: left;
+}
+
+#smaller-line{
+    width: 625px;
 }

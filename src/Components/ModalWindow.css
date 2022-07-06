@@ -33,7 +33,7 @@
     cursor: pointer;
   }
   
-  #error-img {
+  .error-img {
       width: 150px;
       height: 200px;
       border-radius: 100px;
