@@ -22,7 +22,7 @@ const useFirebase = (videoId) => {
       setComments(allComments);
     });
     return unsubscribe;
-  }, []);
+  }, [q]);
 
   const postComment = (author, comment) => {
     return addDoc(commentsCollection, { author, comment, videoId });
