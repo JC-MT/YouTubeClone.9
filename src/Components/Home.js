@@ -51,6 +51,7 @@ class Home extends Component {
           <Link to={`/videos/${videoId}`}>
             <img
               id={videoId}
+              className='video-thumbnail'
               src={`${snippet.thumbnails.high.url}`}
               alt="video thumbnail"
             />
@@ -61,7 +62,7 @@ class Home extends Component {
     });
 
     return (
-      <div>
+      <div className="home-container">
         <h1>Home</h1>
         <input
           onChange={this.updateSearch}

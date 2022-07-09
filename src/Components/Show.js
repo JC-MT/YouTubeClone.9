@@ -1,6 +1,6 @@
-import "./Show.css";
-import { useParams } from "react-router-dom";
-import Comment from "./Comment";
+import './Show.css';
+import { useParams } from 'react-router-dom';
+import Comment from './Comment';
 import YouTube from 'react-youtube';
 
 const Show = () => {
@@ -13,16 +13,16 @@ const Show = () => {
       autoplay: 1,
       start: 0,
       end: 0,
-    }
+    },
   };
 
-  const { id } = params
+  const { id } = params;
 
   return (
-    <div>
+    <div className="show-page">
       <h1> Please Enjoy 😎 </h1>
-        <YouTube videoId={id} opts={opts} />
-        <Comment videoId={id} />
+      <YouTube id={'playing-video'} videoId={id} opts={opts} />
+      <Comment videoId={id} />
     </div>
   );
 };

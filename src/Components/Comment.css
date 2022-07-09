@@ -9,31 +9,40 @@
     font-size: medium;
     margin-right: 545px
 }
+
 #nameInput,
 #commentInput {
-    width: 600px;
+    width: min(100% - 2rem, 600px);
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.comment-form {
-    text-align: center;
-    margin: auto;
-}
-
 #nameLabel {
-    margin-right: 575px
+    margin-right: 575px;
 }
 
-#commentLabel{
+#commentLabel {
     margin-right: 550px;
 }
 
-.comment {
-    margin-left: 640px;
+.comments {
+    margin-left: 5%;
     text-align: left;
 }
 
-#smaller-line{
-    width: 625px;
+#smaller-line {
+    width: min(100% - 2rem, 625px);
+}
+
+@media screen and (max-width: 740px) {
+
+    #nameLabel,
+    #nameInput,
+    #commentInput,
+    #commentLabel,
+    #btn {
+        margin-left: 2%;
+        margin-right: 98%;
+    }
+
 }

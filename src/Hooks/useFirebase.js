@@ -1,4 +1,4 @@
-import db from '../Firebase.js';
+import { db } from '../Firebase';
 import {
   collection,
   addDoc,
@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 const useFirebase = (videoId) => {
   const [comments, setComments] = useState([]);
   const commentsCollection = collection(db, 'comments');
-  const q = query(collection(db, 'comments'), where('videoId', '==', videoId));
+  const q = query(commentsCollection, where('videoId', '==', videoId));
 
   useEffect(() => {
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -22,13 +22,13 @@ const useFirebase = (videoId) => {
       setComments(allComments);
     });
     return unsubscribe;
-  }, [q]);
+    // eslint-disable-next-line
+  }, []);
 
   const postComment = (author, comment) => {
     return addDoc(commentsCollection, { author, comment, videoId });
   };
 
-  console.log(comments);
   return [comments, postComment];
 };
 

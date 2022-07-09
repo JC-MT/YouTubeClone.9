@@ -9,16 +9,16 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyDrXKP6q7m7PfI6wKk4e3Gcpl4mYlDADUo",
   authDomain: "live-chat--practice.firebaseapp.com",
+  databaseURL: "https://live-chat--practice-default-rtdb.firebaseio.com",
   projectId: "live-chat--practice",
   storageBucket: "live-chat--practice.appspot.com",
   messagingSenderId: "318628534292",
   appId: "1:318628534292:web:9ecb4b4896a027c9876f01",
   measurementId: "G-C82MBZNJE2"
-
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
-export default db
+export default app
