@@ -1,12 +1,12 @@
 input {
-    width: 500px;
+    width: min(100% - 2rem, 500px);
     padding: 10px;
     border-radius: 5px;
 }
 
 #mainSearch {
     padding: 10px;
-    width: 100px;
+    width: min(100% - 2rem, 100px);
     border-radius: 5px;
     color: white;
     background-color: red;
@@ -14,9 +14,9 @@ input {
 }
 
 #no-search {
-    width: 600px;
+    width: min(100% - 1rem, 600px);
     border-radius: 5px;
-    margin: auto;
+    margin-inline: auto;
     margin-top: 25px;
     padding: 20px;
     background-color: lightgrey;
@@ -27,5 +27,9 @@ input {
   padding: 30px;
   column-gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
+}
+
+.video-thumbnail{
+    width: min(100% - 1rem, 500px);
 }
   

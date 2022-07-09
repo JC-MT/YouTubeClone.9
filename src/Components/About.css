@@ -1,8 +1,9 @@
 .about {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding: 30px;
-  gap: 1rem;
+  place-content: center;
+  gap: .5rem;
+  padding: 5%;
 }
 
 .header {
@@ -19,9 +20,9 @@
 }
 
 .headshot {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
+  width: min(100% - 1rem, 200px);
+  height: min(100% - 1rem, 200px);
+  border-radius: 100%;
 }
 
 .bio {
@@ -34,10 +35,10 @@
   padding: 10px;
 }
 
-a {
-  color: red;
-}
-
-a:hover {
-  color: black;
+@media screen and (max-width: 690px){
+  .about {
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: .5rem;
+    place-content: center;
+  }
 }

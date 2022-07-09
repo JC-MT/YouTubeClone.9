@@ -13,8 +13,8 @@ const ModalWindow = () => {
           X
         </span>
         <img
-          id="error-img"
-          src="./error.png"
+          className="error-img"
+          src="../error.png"
           alt="exclamation mark"
         />
         <h1>Something went wrong</h1>

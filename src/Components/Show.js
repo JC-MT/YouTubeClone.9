@@ -1,31 +1,28 @@
-import "./Show.css";
-import { useParams } from "react-router-dom";
-import Comment from "./Comment";
+import './Show.css';
+import { useParams } from 'react-router-dom';
+import Comment from './Comment';
 import YouTube from 'react-youtube';
 
-const Show = ({ currentVideos }) => {
+const Show = () => {
   let params = useParams();
-  let selectedVideo = currentVideos.find((video) => {
-    return video.id.videoId === params.id;
-  });
 
   const opts = {
-    height: '390',
-    width: '640',
+    height: '490',
+    width: '740',
     playerVars: {
       autoplay: 1,
       start: 0,
       end: 0,
-    }
+    },
   };
 
-  const { videoId } = selectedVideo.id
+  const { id } = params;
 
   return (
-    <div>
+    <div className="show-page">
       <h1> Please Enjoy 😎 </h1>
-        <YouTube videoId={videoId} opts={opts} />
-        <Comment/>
+      <YouTube id={'playing-video'} videoId={id} opts={opts} />
+      <Comment videoId={id} />
     </div>
   );
 };

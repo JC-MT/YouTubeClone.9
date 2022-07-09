@@ -1,38 +1,35 @@
 .navbar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background-color: red;
-    text-align: left;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: red;
+  text-align: left;
 }
 
 #paths {
-    display: grid; 
-    margin: 0px 25px;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-}
-
-#paths #logo{
-    color: white;
-    margin-top: 34px;
+  display: grid;
+  margin-left: 10%;
+  background-color: red;
+  grid-template-columns: repeat(2, 1fr);
+  width: min(100% - 1rem, 100px);
+  gap: 1.5rem;
 }
 
 #paths h3 a {
-    background: var(--primary);
-    display: block;
-    color: white;
-    border: 1px solid var(--primary);
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-  }
+  display: block;
+  background: var(--primary);
+  color: white;
+  border: 1px solid var(--primary);
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+}
 
 
 #paths h3 a:hover {
-    background: var(--white);
-    color: var(--black);
-  }
+  background: var(--white);
+  color: var(--black);
+}
 
 .logo {
   height: 60px;
@@ -40,5 +37,17 @@
 }
 
 .logo:hover {
-    filter: invert(1);
+  filter: invert(1);
+}
+
+@media screen and (max-width: 740px) {
+  .navbar {
+    display: flex;
+  }
+
+  #paths {
+    gap: .5rem;
+    margin-left: 2%;
+  }
+
 }
