@@ -1,5 +1,5 @@
 import './App.css';
-import { Component, ReactElement } from 'react';
+import { Component } from 'react';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
 import About from './Components/About';
@@ -9,22 +9,27 @@ import { Route, Routes } from 'react-router-dom';
 
 type State = {
   videos: Array<Object>,
-  loadingActive: Boolean,
+  loadingActive: Boolean
 };
 
-class App extends Component<State>{
-  constructor(props: State) {
-    super(props);
-    this.state = {
+type Videos = {
+  etag: string,
+  items: Array<Object>,
+  kind: string, 
+  nextPageToken: string,
+  pageInfo: Object,
+  regionCode: string
+}
+
+class App extends Component<{}, State> {
+    state = {
       videos: [],
       loadingActive: false,
     };
-  }
 
-  currentVideos = (videos: Object) => {
-    const { items }: any = videos;
+  currentVideos = (videos: Videos) => {
     this.setState({
-      videos: [...items],
+      videos: [...videos.items],
       loadingActive: false,
     });
   };
@@ -37,7 +42,7 @@ class App extends Component<State>{
   };
 
   render() {
-    const spinner: ReactElement<any, any> = (
+    const spinner = (
       <div className="spinner">
         <div className="loading" />
       </div>

@@ -4,25 +4,44 @@ import "./ModalWindow";
 import ModalWindow from "./ModalWindow";
 import { Link } from "react-router-dom";
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      search: "",
-    };
-  }
+type PrivateProps = {
+  getRequest: Function,
+  currentVideos: Array<Object>,
+  loadingActive: Function,
+  searching: Boolean
+};
 
-  updateSearch = (event) => {
+type State = {
+  search: string
+}
+
+type Video = {
+  etag: string,
+  id: { videoId: string},
+  kind: string,
+  snippet: {title: string, thumbnails: { high: { url: string} } }
+}
+
+class Home extends Component<PrivateProps, State> {
+  state = {
+    search: "",
+  };
+
+  updateSearch: Function = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     this.setState({ search: value });
   };
 
-  handleError = () => {
+  handleError: Function = () => {
     this.props.loadingActive(false);
-    document.getElementById("myModal").style.display = "block";
+    const model = document.getElementById("myModal") as HTMLElement;
+
+    if(model){
+      model.style.display = "block"
+    }
   };
 
-  submitSearch = () => {
+  submitSearch: Function = () => {
     this.props.loadingActive(true);
     const KEY = "AIzaSyBtYNZDf3EsFIMB_ANFZHzdirKnX_GWMs0";
     fetch(
@@ -34,16 +53,15 @@ class Home extends Component {
           return response.json();
         }
       })
-      .then(this.props.getRequest)
-      .catch(this.handleError);
+      .then((res) => this.props.getRequest(res) )
+      .catch(() => this.handleError());
   };
 
   render() {
     const { currentVideos, searching } = this.props;
 
-    const results = currentVideos.map((video) => {
-      const { snippet } = video;
-      const { videoId } = video.id;
+    const results : React.ReactNode = currentVideos.map((video: Object) => {
+      const { snippet, id: { videoId } } = video as Video;
 
       return (
         <div key={videoId}>
@@ -64,7 +82,7 @@ class Home extends Component {
       <div className="home-container">
         <h1>Home</h1>
         <input
-          onChange={this.updateSearch}
+          onChange={(event: React.ChangeEvent) => this.updateSearch(event)}
           onKeyDown={(baseEvent) => {
             if (baseEvent.key === 'Enter') {
               this.submitSearch();
@@ -74,7 +92,7 @@ class Home extends Component {
           placeholder="Search…"
           type="text"
         />
-        <button onClick={this.submitSearch} id="mainSearch">Search…</button>
+        <button onClick={() => this.submitSearch() } id="mainSearch">Search…</button>
         {currentVideos.length > 0 || searching ? (
           <div className="video-grid">{results}</div>
         ) : (
