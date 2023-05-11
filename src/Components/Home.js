@@ -17,8 +17,7 @@ class Home extends Component {
     this.setState({ search: value });
   };
 
-  handleError = (error) => {
-    console.log(error);
+  handleError = () => {
     this.props.loadingActive(false);
     document.getElementById("myModal").style.display = "block";
   };
@@ -66,7 +65,7 @@ class Home extends Component {
         <h1>Home</h1>
         <input
           onChange={this.updateSearch}
-          onKeyPress={(baseEvent) => {
+          onKeyDown={(baseEvent) => {
             if (baseEvent.key === 'Enter') {
               this.submitSearch();
             }
@@ -83,7 +82,6 @@ class Home extends Component {
             No search results yet! Please submit a search above!
           </p>
         )}
-        {/* <!-- The Modal --> */}
         <ModalWindow />
       </div>
     );
