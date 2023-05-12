@@ -9,37 +9,31 @@ import {
   CollectionReference,
   QuerySnapshot,
   Query,
-  DocumentData
+  DocumentData,
 } from 'firebase/firestore';
 
-export default function useFirebase(videoId: string) {
+export default function useFirebase(videoId: string | undefined){
   const [comments, setComments]: [Object[], Function] = useState([]);
   const commentsCollection: CollectionReference = collection(db, 'comments');
-  const q: Query<DocumentData> = query(
-    commentsCollection,
-    where('videoId', '==', videoId)
-  );
+  const q: Query<DocumentData> = query(commentsCollection, where('videoId', '==', videoId));
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(
-      q,
-      (snapshot: QuerySnapshot<DocumentData>) => {
-        const allComments: Object[] = [];
 
-        snapshot.forEach((doc: any) => {
-          const data: Object = doc.data();
-          allComments.push(data);
-        });
-
-        setComments(allComments);
-      }
-    );
+    const unsubscribe = onSnapshot(q, (snapshot: QuerySnapshot<DocumentData>) => {
+      const allComments: Object[] = [];
+      snapshot.forEach((doc: any) => {
+        const data: Object = doc.data()
+        allComments.push(data);
+      });
+      setComments(allComments);
+    });
     return unsubscribe;
+    // eslint-disable-next-line
   }, []);
 
-  const postComment = (author: string, comment: string) => {
+  const postComment: Function = (author: string, comment: string) => {
     return addDoc(commentsCollection, { author, comment, videoId });
   };
 
   return [comments, postComment];
-}
+};

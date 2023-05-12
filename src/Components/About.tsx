@@ -1,6 +1,6 @@
 import './About.css';
 
-const About = () => {
+const About: Function = () => {
   return (
     <div>
       <h1 className="header">

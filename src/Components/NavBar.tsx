@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
-const NavBar = () => {
+const NavBar: Function = () => {
   return (
     <div className="navbar">
       <div id="paths">

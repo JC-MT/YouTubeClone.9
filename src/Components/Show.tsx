@@ -4,10 +4,10 @@ import Comment from './Comment';
 import YouTube from 'react-youtube';
 
 type VideoParams = {
-  id: string;
+  id: string
 };
 
-const Show = () => {
+const Show: Function = () => {
   const { id } = useParams<VideoParams>();
 
   const opts: Object = {

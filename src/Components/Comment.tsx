@@ -2,20 +2,36 @@ import { useState } from "react";
 import useFirebase from "../Hooks/useFirebase";
 import "./Comment.css";
 
-export default function Comment({videoId}){
-  const [commentDraft, setCommentDraft] = useState({
+type CommentDraft = {
+  name: string,
+  comment: string
+}
+
+type CommentData = {
+  author: string,
+  comment: string
+}
+
+type CommentProp = {
+  videoId: string | undefined
+}
+
+export default function Comment({videoId}: CommentProp){
+  const [commentDraft, setCommentDraft]: [CommentDraft, Function] = useState({
     name: "",
     comment: "",
   });
 
-  const handleChange = (event) => {
+  const handleChange: Function = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setCommentDraft({...commentDraft, [name]: value });
   };
 
-  const [ comments, postComment] = useFirebase(videoId)
-  const addComment = (event) => {
+  const [ comments, postComment]: any  = useFirebase(videoId)
+
+  const addComment: Function = (event: React.FormEvent) => {
     event.preventDefault();
+
     if (commentDraft.name && commentDraft.comment) {
       postComment(commentDraft.name, commentDraft.comment)
       setCommentDraft({name: "", comment: ""})
@@ -28,7 +44,7 @@ export default function Comment({videoId}){
       <div>
         <hr></hr>
         <div className="comment-form">
-          <form onSubmit={addComment}>
+          <form onSubmit={() => addComment()}>
             <label id='nameLabel'>Name</label>
             <br />
             <input
@@ -37,7 +53,7 @@ export default function Comment({videoId}){
               name="name"
               placeholder="Name..."
               value={commentDraft.name}
-              onChange={handleChange}
+              onChange={() => handleChange()}
             />
             <br />
             <label id="commentLabel">Comment</label>
@@ -48,7 +64,7 @@ export default function Comment({videoId}){
               name="comment"
               placeholder="..."
               value={commentDraft.comment}
-              onChange={handleChange}
+              onChange={() => handleChange()}
             />
             <br />
             <div className="section">
@@ -57,15 +73,16 @@ export default function Comment({videoId}){
             </div>
           </form>
           <div className="comments" >
-          {comments.map((comment, idx) => {
+          {comments instanceof Array ? comments.map((incommingComment: Object | undefined, idx: number) => {
+            const { author, comment} = incommingComment as CommentData
             return (
               <div key={idx}>
                 <h3>
-                  {comment.author}:
+                  {author}:
                 </h3>
-                <p>{comment.comment}</p>
+                <p>{comment}</p>
               </div>);
-          })}
+          }) : null}
           </div>
         </div>
       </div>

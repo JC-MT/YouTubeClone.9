@@ -1,6 +1,6 @@
 import './ModalWindow.css';
 
-const ModalWindow = () => {
+const ModalWindow: Function = () => {
 
   const closeModelWindow: Function = () => {
     const model = document.getElementById('myModal') as HTMLElement;
