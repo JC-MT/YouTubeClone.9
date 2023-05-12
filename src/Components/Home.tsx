@@ -53,11 +53,11 @@ class Home extends Component<PrivateProps, State> {
           return response.json() as Promise<Object>;
         } else {
           this.handleError()
-          return Error
+          throw Error
         }
       })
-      .then((res) => this.props.getRequest(res))
-      .catch(() => this.handleError());
+      .then((res: Object) => this.props.getRequest(res))
+      .catch((err: Error) => this.handleError(err));
   };
 
   override render() {

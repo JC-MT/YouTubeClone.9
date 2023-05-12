@@ -8,7 +8,7 @@ import {
 } from 'firebase/firestore';
 
 import { useState, useEffect } from 'react';
-const useFirebase = (videoId) => {
+export default function useFirebase(videoId){
   const [comments, setComments] = useState([]);
   const commentsCollection = collection(db, 'comments');
   const q = query(commentsCollection, where('videoId', '==', videoId));
@@ -31,5 +31,3 @@ const useFirebase = (videoId) => {
 
   return [comments, postComment];
 };
-
-export default useFirebase;

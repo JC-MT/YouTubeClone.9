@@ -1,15 +1,19 @@
 import './ModalWindow.css';
 
 const ModalWindow = () => {
-  // When the user clicks on <span> (x), close the modal
-  const closeModelWindow = () => {
-    document.getElementById('myModal').style.display = 'none';
+
+  const closeModelWindow: Function = () => {
+    const model = document.getElementById('myModal') as HTMLElement;
+
+    if(model){
+      model.style.display = 'none';
+    }
   };
 
   return (
     <div id="myModal" className="modal">
       <div className="modal-content">
-        <span onClick={closeModelWindow} className="close">
+        <span onClick={() => closeModelWindow()} className="close">
           X
         </span>
         <img

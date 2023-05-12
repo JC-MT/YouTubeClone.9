@@ -56,15 +56,17 @@ export default function Comment({videoId}){
               <hr id="smaller-line"></hr>
             </div>
           </form>
+          <div className="comments" >
           {comments.map((comment, idx) => {
             return (
-              <div className="comments" key={idx}>
+              <div key={idx}>
                 <h3>
-                  {comment.author}
+                  {comment.author}:
                 </h3>
                 <p>{comment.comment}</p>
               </div>);
           })}
+          </div>
         </div>
       </div>
     );

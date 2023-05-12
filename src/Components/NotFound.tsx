@@ -20,7 +20,7 @@ export default function NotFound() {
           X
         </span>
         <img className="error-img" src="../error.png" alt="exclamation mark" />
-        <h1>Something went wrong</h1>
+        <h1>Page not found</h1>
       </div>
     </div>
   );

@@ -1,3 +1,15 @@
+.comment-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.comments{
+    display: flex;
+    place-self: center;
+    place-items: left;
+    width: min(100% - 2rem, 625px);
+}
+
 #btn {
     background-color: rgb(30, 124, 224);
     color: white;
@@ -8,6 +20,11 @@
     text-align: center;
     font-size: medium;
     margin-right: 545px
+}
+
+#btn:hover {
+    cursor: pointer;
+    color: black;
 }
 
 #nameInput,
@@ -25,9 +42,15 @@
     margin-right: 550px;
 }
 
-.comments {
-    margin-left: 5%;
-    text-align: left;
+.comments h3{
+   margin: 0px;
+   text-align: left;
+   padding: 2px;
+}
+
+.comments p{
+    margin-top: 0px;
+    padding: 5px;
 }
 
 #smaller-line {
