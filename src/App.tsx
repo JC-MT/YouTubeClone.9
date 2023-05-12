@@ -14,7 +14,7 @@ type State = {
 
 type Videos = {
   etag: string,
-  items: Array<Object>,
+  items: Object[],
   kind: string, 
   nextPageToken: string,
   pageInfo: Object,
@@ -22,27 +22,29 @@ type Videos = {
 }
 
 class App extends Component<{}, State> {
-    state = {
-      videos: [],
-      loadingActive: false,
-    };
+  override state = {
+    videos: [],
+    loadingActive: false,
+  };
 
-  currentVideos = (videos: Videos) => {
+  currentVideos: Function = (videos: Videos) => {
+    const { items } = videos
+
     this.setState({
-      videos: [...videos.items],
+      videos: [...items],
       loadingActive: false,
     });
   };
 
-  loadingActive = (triggered: Boolean) => {
+  loadingActive: Function = (triggered: Boolean) => {
     this.setState({
       loadingActive: triggered,
       videos: [],
     });
   };
 
-  render() {
-    const spinner = (
+  override render() {
+    const spinner: JSX.Element = (
       <div className="spinner">
         <div className="loading" />
       </div>
@@ -72,7 +74,7 @@ class App extends Component<{}, State> {
         {this.state.loadingActive === true ? spinner : null}
       </div>
     );
-  }
-}
+  };
+};
 
 export default App;
