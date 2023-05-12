@@ -44,7 +44,7 @@ export default function Comment({videoId}: CommentProp){
       <div>
         <hr></hr>
         <div className="comment-form">
-          <form onSubmit={() => addComment()}>
+          <form onSubmit={(e) => addComment(e)}>
             <label id='nameLabel'>Name</label>
             <br />
             <input
@@ -53,7 +53,7 @@ export default function Comment({videoId}: CommentProp){
               name="name"
               placeholder="Name..."
               value={commentDraft.name}
-              onChange={() => handleChange()}
+              onChange={(e) => handleChange(e)}
             />
             <br />
             <label id="commentLabel">Comment</label>
@@ -64,7 +64,7 @@ export default function Comment({videoId}: CommentProp){
               name="comment"
               placeholder="..."
               value={commentDraft.comment}
-              onChange={() => handleChange()}
+              onChange={(e) => handleChange(e)}
             />
             <br />
             <div className="section">
