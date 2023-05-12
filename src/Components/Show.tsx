@@ -3,20 +3,22 @@ import { useParams } from 'react-router-dom';
 import Comment from './Comment';
 import YouTube from 'react-youtube';
 
-const Show = () => {
-  let params = useParams();
+type VideoParams = {
+  id: string;
+};
 
-  const opts = {
+const Show = () => {
+  const { id } = useParams<VideoParams>();
+
+  const opts: Object = {
     height: '490',
     width: '740',
     playerVars: {
       autoplay: 1,
       start: 0,
-      end: 0,
-    },
+      end: 0
+    }
   };
-
-  const { id } = params;
 
   return (
     <div className="show-page">
